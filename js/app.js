@@ -32,17 +32,17 @@ const videos = {
     'video1': {
         title: 'Introduction to Web Development',
         description: 'This comprehensive introduction covers the core concepts of web development including HTML structure, CSS styling, and JavaScript interactivity.',
-        hlsUrl: 'https://your-server.com/videos/intro-web-dev/playlist.m3u8' // placeholder
+        hlsUrl: 'https://drive.google.com/file/d/1ABRpByD4wGclgwPICkYUCav96JheklBJ/view?usp=drive_link' // placeholder
     },
     'video2': {
         title: 'Advanced JavaScript Techniques',
         description: 'Dive deep into modern JavaScript with topics including closures, promises, async/await, and modular design patterns.',
-        hlsUrl: 'https://your-server.com/videos/advanced-js/playlist.m3u8' // placeholder
+        hlsUrl: 'https://drive.google.com/file/d/1ABRpByD4wGclgwPICkYUCav96JheklBJ/view?usp=drive_link' // placeholder
     },
     'video3': {
         title: 'Responsive Web Design',
         description: 'Learn how to create fluid designs that adapt to any screen size using media queries, flexible grids, and responsive images.',
-        hlsUrl: 'https://your-server.com/videos/responsive-design/playlist.m3u8' // placeholder
+        hlsUrl: 'https://drive.google.com/file/d/1ABRpByD4wGclgwPICkYUCav96JheklBJ/view?usp=drive_link' // placeholder
     }
 };
 
