@@ -172,12 +172,16 @@
         <!-- Adsterra ads will be injected here -->
     </div>
 
-    <!-- Video Player Section (hidden by default) -->
-    <section id="video-section" class="video-player-section" style="display: none;">
+    <!-- Video Player Section -->
+    <section id="video-section" class="video-player-section">
         <div class="container">
             <div class="video-container">
                 <div class="video-wrapper">
-                    <video id="video-player" controls></video>
+                    <h2>Secure Video Playback</h2>
+                    <video id="secureVideo" width="640" height="480" controls controlsList="nodownload" oncontextmenu="return false">
+                        <source src="http://localhost:3000/stream" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
                 <div class="video-info">
                     <h2 id="video-title">Course Title</h2>
@@ -257,5 +261,37 @@
 
     <!-- JavaScript -->
     <script src="js/app.js"></script>
+    <script>
+        // Additional JavaScript for video functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoPlayer = document.getElementById('secureVideo');
+            
+            // Add event listener for video errors
+            videoPlayer.addEventListener('error', function() {
+                console.error('Video playback error:', videoPlayer.error);
+                alert('Failed to load the video. Please check your connection and try again.');
+            });
+
+            // Add event listener for video play
+            videoPlayer.addEventListener('play', function() {
+                console.log('Video playback started');
+            });
+
+            // Add event listener for video pause
+            videoPlayer.addEventListener('pause', function() {
+                console.log('Video playback paused');
+            });
+
+            // Add event listener for video ended
+            videoPlayer.addEventListener('ended', function() {
+                console.log('Video playback ended');
+            });
+
+            // Add event listener for video time update
+            videoPlayer.addEventListener('timeupdate', function() {
+                console.log('Current playback time:', videoPlayer.currentTime);
+            });
+        });
+    </script>
 </body>
 </html>
