@@ -5,7 +5,7 @@ const port = 3000;
 
 // Your Google Drive file ID and API Key
 const FILE_ID = '1ABRpByD4wGclgwPICkYUCav96JheklBJ'; 
-const API_KEY = 'AIzaSyDKxwCPDRTE9TidOsEPWy5srmHBz6oFA4I'; // Replace with your actual API key
+const API_KEY = 'AIzaSyB3h-qLOj9TZ33mA2qzK1h0qtA7dKVl2t0'; // Replace with your actual API key
 
 // Route for streaming the video
 app.get('/stream', async (req, res) => {
