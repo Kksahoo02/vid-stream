@@ -3,17 +3,20 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 // Your Google Drive file ID and API Key
-const FILE_ID = '1ABRpByD4wGclgwPICkYUCav96JheklBJ'; 
-const API_KEY = 'AIzaSyB3h-qLOj9TZ33mA2qzK1h0qtA7dKVl2t0'; // Replace with your actual API key
+const FILE_ID = '1ABRpByD4wGclgwPICkYUCav96JheklBJ';
+const API_KEY = 'AIzaSyB3h-qLOj9TZ33mA2qzK1h0qtA7dKVl2t0';
 
 // Route for streaming the video
 app.get('/stream', async (req, res) => {
-    const range = req.headers.range; // Get the range header from the request
+    const range = req.headers.range;
     const url = `https://www.googleapis.com/drive/v3/files/${FILE_ID}?alt=media&key=${API_KEY}`;
 
     try {
-        const fileInfo = await axios.head(url);  // Get the file info to determine file size
+        const fileInfo = await axios.head(url);
         const fileSize = fileInfo.headers['content-length'];
         
         if (range) {
@@ -34,17 +37,16 @@ app.get('/stream', async (req, res) => {
                 responseType: 'stream'
             });
 
-            res.status(206);  // Partial content
+            res.status(206);
             res.setHeader('Content-Range', `bytes ${start}-${end}/${fileSize}`);
             res.setHeader('Accept-Ranges', 'bytes');
             res.setHeader('Content-Length', chunkSize);
             res.setHeader('Content-Type', 'video/mp4');
-            videoStream.data.pipe(res);  // Stream the video chunk to the client
+            videoStream.data.pipe(res);
         } else {
-            // If no range header, send the entire video
             const videoStream = await axios.get(url, { responseType: 'stream' });
             res.setHeader('Content-Type', 'video/mp4');
-            videoStream.data.pipe(res);  // Send the entire video
+            videoStream.data.pipe(res);
         }
     } catch (error) {
         console.error('Error fetching video:', error);
@@ -53,5 +55,5 @@ app.get('/stream', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`✅ Secure video server running at http://localhost:${port}/stream`);
+    console.log(`Proxy server running at http://localhost:${port}`);
 });
